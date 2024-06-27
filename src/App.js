@@ -20,8 +20,10 @@ const App = () => {
   const checkUserData = () => {
     let user = localStorage.getItem("userDetails");
     let data = JSON.parse(user);
-    getPageApiCall(data);
-    setUserData(data);
+    if (data?.userID > 0) {
+      getPageApiCall(data);
+      setUserData(data);
+    }
   };
 
   const getPageApiCall = async (data) => {
